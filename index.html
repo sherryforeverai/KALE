@@ -3,317 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KALE Quartet | Student Woodwind Ensemble</title>
+    <title>KALE Woodwind Quartet</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --kale-green: #2D5A27;
-            --charcoal: #333333;
-            --off-white: #FCFCFC;
-            --light-gray: #F0F0F0;
-            --transition: all 0.3s ease;
+            /* EXACT COLORS FROM YOUR LOGO */
+            --dark-green: #152621; 
+            --gold: #c5a059;       
+            --pure-white: #ffffff;
+            --text-gray: rgba(255, 255, 255, 0.8);
+            --border-gold: rgba(197, 160, 89, 0.3);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--charcoal);
-            background-color: var(--off-white);
+            line-height: 1.7;
+            color: var(--pure-white);
+            background-color: var(--dark-green);
             overflow-x: hidden;
         }
+
+        h1, h2, h3, .logo-text { font-family: 'Playfair Display', serif; }
 
         /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            background: white;
+            padding: 1rem 8%;
+            background: rgba(21, 38, 33, 0.98);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border-gold);
+            backdrop-filter: blur(10px);
         }
 
-        .logo {
-            font-weight: 600;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            color: var(--kale-green);
-            text-transform: uppercase;
-        }
+        .nav-logo { display: flex; align-items: center; cursor: pointer; text-decoration: none; }
+        .nav-logo img { height: 40px; width: auto; transition: var(--transition); }
+        .logo-text { color: var(--pure-white); margin-left: 12px; font-size: 1.2rem; letter-spacing: 3px; font-weight: 700; }
 
-        .nav-links { display: flex; gap: 1.2rem; list-style: none; }
-        .nav-links li { cursor: pointer; font-weight: 400; font-size: 0.85rem; transition: var(--transition); color: #666; }
-        .nav-links li.active { color: var(--kale-green); font-weight: 600; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links li { 
+            cursor: pointer; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.5);
+            transition: var(--transition);
+        }
+        .nav-links li:hover, .nav-links li.active { color: var(--gold); }
 
         .btn-book {
-            background: var(--kale-green);
-            color: white;
-            padding: 0.5rem 0.8rem;
-            border-radius: 4px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.6rem 1.4rem;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.8rem;
-            white-space: nowrap;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
         }
+        .btn-book:hover { background: var(--gold); color: var(--dark-green); }
 
-        .container { 
-            max-width: 1000px; 
-            margin: 2rem auto; 
-            padding: 0 1.5rem; 
-            min-height: 65vh; 
+        /* Hero Section */
+        .hero { 
+            text-align: center; 
+            padding: 5rem 1.5rem 2rem;
+            background: radial-gradient(circle at center, rgba(197, 160, 89, 0.08) 0%, var(--dark-green) 70%);
         }
+        .main-logo-img {
+            max-width: 320px;
+            width: 80%;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 15px 40px rgba(0,0,0,0.6));
+            animation: logoFade 1.5s ease;
+        }
+        @keyframes logoFade { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-        .tab-content { display: none; animation: fadeIn 0.4s ease; }
-        .tab-content.active { display: block; }
+        .hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 0.5rem; letter-spacing: -1px; }
+        .hero p { font-size: 1.2rem; color: var(--gold); font-style: italic; opacity: 0.9; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        /* Tab Content Containers */
+        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; min-height: 50vh; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: tabFade 0.6s ease forwards; }
+        @keyframes tabFade { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Vision Section */
-        .hero { text-align: center; margin-bottom: 3rem; padding: 1rem 0; }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--kale-green); line-height: 1.1; }
-        .hero p { font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto; }
-
+        /* Vision Cards */
         .statement-card { 
-            background: white; 
-            padding: 2rem; 
-            border-radius: 8px; 
-            margin-bottom: 1.5rem; 
-            border-left: 4px solid var(--kale-green); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+            background: rgba(255, 255, 255, 0.02); 
+            padding: 3.5rem 2rem; 
+            border: 1px solid var(--border-gold);
+            margin-bottom: 2.5rem; 
+            text-align: center;
+            border-radius: 2px;
         }
-        .statement-card h2 { margin-bottom: 0.8rem; font-size: 0.9rem; text-transform: uppercase; color: #999; letter-spacing: 1.5px; }
+        .statement-card h2 { color: var(--gold); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 4px; font-size: 0.85rem; }
+        .statement-card p { font-size: 1.4rem; font-family: 'Playfair Display', serif; line-height: 1.6; color: var(--pure-white); }
 
-        /* Member Grid - Alphabetical Order (Aiden, Eric, Katelyn, Leo) */
+        /* Member Grid - 4 Columns Forced */
         .member-grid { 
             display: grid; 
-            grid-template-columns: 1fr; 
+            grid-template-columns: repeat(4, 1fr); 
             gap: 1.5rem; 
         }
-        
-        @media (min-width: 650px) { .member-grid { grid-template-columns: 1fr 1fr; } }
-        @media (min-width: 950px) { .member-grid { grid-template-columns: 1fr 1fr 1fr 1fr; } }
 
         .member-card { 
-            background: white; 
-            padding: 1.5rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+            background: rgba(255,255,255,0.03); 
+            padding: 1.8rem; 
+            border-top: 2px solid var(--gold);
             display: flex;
             flex-direction: column;
-        }
-        .member-card h3 { color: var(--kale-green); font-size: 1.25rem; }
-        .member-card .instrument { font-weight: 600; color: #888; font-size: 0.85rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .member-card p { font-size: 0.9rem; color: #555; line-height: 1.5; flex-grow: 1; }
-        .fun-fact { margin-top: 1rem; font-style: italic; font-size: 0.85rem; color: var(--kale-green); padding-top: 0.8rem; border-top: 1px solid var(--light-gray); }
-
-        /* Highlights */
-        .gallery-placeholder { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 1rem; 
-            margin-bottom: 2rem; 
-        }
-        .photo-box { background: #eee; aspect-ratio: 4/3; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 0.8rem; }
-        
-        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        table { width: 100%; border-collapse: collapse; min-width: 500px; }
-        th { text-align: left; padding: 1.2rem; background: var(--kale-green); color: white; font-size: 0.85rem; }
-        td { padding: 1.2rem; border-bottom: 1px solid var(--light-gray); font-size: 0.9rem; }
-
-        /* Form */
-        .form-container { max-width: 550px; margin: 0 auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        input, textarea { 
-            width: 100%; 
-            padding: 0.9rem; 
-            margin-bottom: 1.2rem; 
-            border: 1px solid #ddd; 
-            border-radius: 6px; 
-            font-family: inherit; 
-            font-size: 16px; 
-        }
-        .btn-submit { 
-            background: var(--kale-green); 
-            color: white; 
-            border: none; 
-            padding: 1.1rem; 
-            cursor: pointer; 
-            border-radius: 6px; 
-            width: 100%; 
-            font-weight: 600; 
-            font-size: 1rem;
             transition: var(--transition);
+        }
+        .member-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-5px); }
+        .member-card h3 { font-size: 1.4rem; margin-bottom: 0.2rem; color: var(--pure-white); }
+        .member-card .instrument { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 1.2rem; }
+        .member-card p { font-size: 0.85rem; color: var(--text-gray); flex-grow: 1; }
+        .fun-fact { margin-top: 1.5rem; font-size: 0.75rem; color: var(--gold); font-style: italic; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; }
+
+        /* Gallery Placeholders */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .photo-box { background: rgba(255,255,255,0.02); border: 1px solid var(--border-gold); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Table */
+        .table-container { overflow-x: auto; margin-top: 3rem; background: rgba(0,0,0,0.1); border: 1px solid var(--border-gold); }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th { text-align: left; padding: 1.2rem; border-bottom: 1px solid var(--gold); color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
+        td { padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
+
+        /* Form Box */
+        .form-box { max-width: 600px; margin: 0 auto; background: rgba(0,0,0,0.2); padding: 3rem; border: 1px solid var(--border-gold); }
+        input, textarea { 
+            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); 
+            padding: 1.2rem; margin-bottom: 1.5rem; color: white; font-family: 'Inter', sans-serif; font-size: 16px; 
+        }
+        input:focus, textarea:focus { border-color: var(--gold); outline: none; }
+        .btn-submit { 
+            background: var(--gold); color: var(--dark-green); border: none; padding: 1.2rem; 
+            width: 100%; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: var(--transition);
         }
         .btn-submit:hover { opacity: 0.9; }
 
         /* Footer */
-        footer { 
-            background: white; 
-            padding: 4rem 5%; 
-            border-top: 1px solid var(--light-gray); 
-            text-align: center; 
-            margin-top: 4rem; 
-        }
-        .footer-info { font-size: 0.85rem; color: #999; line-height: 2; }
+        footer { padding: 6rem 8% 4rem; border-top: 1px solid var(--border-gold); text-align: center; }
+        .footer-logo { max-width: 100px; margin-bottom: 2rem; filter: grayscale(1) brightness(2); opacity: 0.4; }
+        .footer-text { font-size: 0.7rem; color: rgba(255,255,255,0.3); letter-spacing: 2px; line-height: 2.5; }
 
-        @media (max-width: 480px) {
-            .nav-links { gap: 0.8rem; }
-            .nav-links li { font-size: 0.8rem; }
-            .logo { font-size: 1rem; }
-            .hero h1 { font-size: 2rem; }
+        /* Responsive Mobile Settings */
+        @media (max-width: 900px) {
+            .member-grid { grid-template-columns: 1fr 1fr; } /* 2x2 on tablets */
+        }
+        @media (max-width: 600px) {
+            nav { padding: 1rem 5%; }
+            .logo-text { font-size: 1rem; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .member-grid { grid-template-columns: 1fr; } /* Stacked on phones */
+            .statement-card p { font-size: 1.1rem; }
+            .container { padding: 3rem 1.2rem; }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="logo">KALE</div>
+    <div class="nav-logo" onclick="showTab('vision')">
+        <!-- Logo automatically pulls from your GitHub repo -->
+        <img src="logo.png" alt="KALE" onerror="this.style.display='none'">
+        <span class="logo-text">KALE</span>
+    </div>
     <ul class="nav-links">
-        <li id="nav-vision" class="active" onclick="showTab('vision')">Vision</li>
-        <li id="nav-members" onclick="showTab('members')">Members</li>
-        <li id="nav-highlights" onclick="showTab('highlights')">Highlights</li>
+        <li class="active" id="link-vision" onclick="showTab('vision')">Vision</li>
+        <li id="link-members" onclick="showTab('members')">Members</li>
+        <li id="link-highlights" onclick="showTab('highlights')">Highlights</li>
     </ul>
-    <a href="javascript:void(0)" class="btn-book" onclick="showTab('contact')">Book Us</a>
+    <a href="javascript:void(0)" class="btn-book" onclick="showTab('contact')">Book Now</a>
 </nav>
 
-<div class="container">
-    
-    <!-- TAB 1: VISION -->
-    <section id="vision" class="tab-content active">
-        <div class="hero">
-            <h1>KALE Quartet</h1>
-            <p>A student-led woodwind ensemble bringing the joy of live music to senior communities.</p>
-        </div>
-        <div class="statement-card">
-            <h2>Our Vision</h2>
-            <p>To bring joy, comfort, and connection to seniors through live music — inspiring cherished memories and strengthening community through the power of performance.</p>
-        </div>
-        <div class="statement-card">
-            <h2>Our Mission</h2>
-            <p>KALE Quartet is dedicated to sharing expressive, high-quality music with senior communities. We aim to brighten days, spark nostalgia, and create meaningful moments for audiences who deserve to feel celebrated and remembered.</p>
-        </div>
+<!-- TAB: VISION -->
+<div id="vision" class="tab-content active">
+    <section class="hero">
+        <img src="logo.png" alt="KALE Woodwind Quartet Logo" class="main-logo-img" onerror="this.src='https://via.placeholder.com/300x300/152621/c5a059?text=KALE+QUARTET'">
+        <h1>KALE Woodwind Quartet</h1>
+        <p>Refining the atmosphere of community through classical excellence.</p>
     </section>
 
-    <!-- TAB 2: MEMBERS (Alphabetical Order) -->
-    <section id="members" class="tab-content">
-        <h2 style="margin-bottom: 2rem; text-align: center; color: var(--kale-green);">Meet the Quartet</h2>
+    <div class="container" style="padding-top: 0;">
+        <div class="statement-card">
+            <h2>The Vision</h2>
+            <p>"To bring joy, comfort, and connection to seniors through live music — inspiring cherished memories and strengthening community through the power of performance."</p>
+        </div>
+        <div class="statement-card">
+            <h2>The Mission</h2>
+            <p>KALE Quartet is a student-led ensemble dedicated to sharing expressive, high-quality music with senior communities, brightening days and creating meaningful moments for audiences who deserve to feel celebrated.</p>
+        </div>
+    </div>
+</div>
+
+<!-- TAB: MEMBERS (ALPHABETICAL) -->
+<div id="members" class="tab-content">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 4rem; color: var(--gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.9rem;">The Musicians</h2>
         <div class="member-grid">
-            <!-- 1. Aiden -->
             <div class="member-card">
                 <h3>Aiden Shan</h3>
                 <span class="instrument">Alto Saxophone</span>
-                <p>Aiden Shan is a rising freshman at Amador Valley High School and has experience with various styles of music on the alto sax. He was selected for the California All-State Honor Band in both 7th and 8th grade and principal player in the All Northern Honor Band, he also has 8 years of piano training and performed as lead alto in the California All-State Jazz Band. An experience of playing at a senior center in 2nd grade, along with his substantial musical experience motivated him to found the KALE quartet to bring joy to the elderly through mellifluous melodies alike. 
-</p>
+                <p>Rising freshman at Amador Valley HS. Selected for the CA All-State Honor Band and Jazz Band. Aiden founded KALE Quartet to bring joy to elderly audiences through the power of music.</p>
                 <p class="fun-fact">Enjoys debate and swimming.</p>
             </div>
-            <!-- 2. Eric -->
             <div class="member-card">
                 <h3>Eric Shin</h3>
                 <span class="instrument">Clarinet</span>
-                <p>Eric Shin is a rising freshman at Amador Valley High School and a passionate clarinetist. He is a member and principal clarinetist in the Oakland Symphony Orchestra. Eric also participated in both the 2025 California All State Concert Band, 2026’s California All State Symphonic Band, as well the 2025 California All Northern Honor Band, and is bound to be the principal player of 2026’s All Northern Band. Finally, he is the principal player of Harvest Park’s Wind Ensemble, and plays multiple instruments including the E♭ Clarinet and the B♭ Bass Clarinet.</p>
+                <p>Rising freshman at Amador Valley HS. Principal clarinetist in the Oakland Symphony Orchestra. Participant in multiple All-State Concert and Symphonic Honor Bands.</p>
                 <p class="fun-fact">Enjoys badminton and cooking.</p>
             </div>
-            <!-- 3. Katelyn -->
             <div class="member-card">
                 <h3>Katelyn Shen</h3>
                 <span class="instrument">Flute</span>
-                <p>Katelyn Shen is a rising freshman at Amador Valley High School and a dedicated flutist. She is principal player of Harvest Park Middle School’s wind ensemble and jazz band, a member of the PLAY Foundation music sub-group, and a participant in the 2026 All Northern Honor Band.</p>
-                <p class="fun-fact">Enjoys camping and astronomy.</p>
+                <p>Rising freshman at Amador Valley HS. Principal player of Harvest Park’s wind ensemble and a dedicated member of the PLAY Foundation and All-Northern Honor Band.</p>
+                <p class="fun-fact">Enjoys camping, art, and astronomy.</p>
             </div>
-            <!-- 4. Leo -->
             <div class="member-card">
                 <h3>Leo Nguyen</h3>
                 <span class="instrument">Oboe</span>
-                <p>Leo Nguyen is a rising freshman at Amador Valley High School. He is an avid oboist and a member of the California Youth Symphony. Leo has participated in the 2026 All-State Symphonic honor band, along with the 2025 and 2026 All-Northern honor band as principal player.</p>
-                <p class="fun-fact">He loves kale and tinkering with electronics and code.</p>
+                <p>Rising freshman at Amador Valley HS. Oboist for the California Youth Symphony. Principal player in the All-State Symphonic and All-Northern honor bands.</p>
+                <p class="fun-fact">His favorite vegetable is kale.</p>
             </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <!-- TAB 3: HIGHLIGHTS -->
-    <section id="highlights" class="tab-content">
-        <h2 style="margin-bottom: 2rem; color: var(--kale-green);">Performance Highlights</h2>
-        <div class="gallery-placeholder">
-            <div class="photo-box">Photo: Recent Performance</div>
-            <div class="photo-box">Photo: Community Event</div>
-            <div class="photo-box">Photo: Rehearsal</div>
+<!-- TAB: HIGHLIGHTS -->
+<div id="highlights" class="tab-content">
+    <div class="container">
+        <h2 style="text-align:center; margin-bottom:3rem; color:var(--gold); text-transform:uppercase; letter-spacing:4px; font-size: 0.9rem;">Performance Highlights</h2>
+        <div class="gallery-grid">
+            <div class="photo-box">Senior Center Performance</div>
+            <div class="photo-box">Community Arts Showcase</div>
+            <div class="photo-box">Ensemble Rehearsal</div>
         </div>
 
-        <h3 style="margin-bottom: 1rem;">Booking Schedule</h3>
-        <div class="table-wrapper">
+        <h3 style="color:var(--gold); margin-top:5rem; text-transform:uppercase; letter-spacing:2px; font-size:0.75rem;">Appearance Schedule</h3>
+        <div class="table-container">
             <table>
                 <thead>
                     <tr>
                         <th>Date</th>
                         <th>Venue</th>
-                        <th>City</th>
-                        <th>Event Type</th>
+                        <th>Location</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="4" style="text-align: center; padding: 3rem; color: #888;">
-                            Currently booking for upcoming senior center and community performances.
+                        <td colspan="4" style="text-align:center; padding: 5rem; opacity: 0.4; font-style: italic; letter-spacing: 1px;">
+                            Currently accepting performance bookings for the 2024–2025 season.
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <p style="margin-top: 1.5rem; font-size: 0.85rem; text-align: center; color: #666;">
-            <em>We are happy to tailor our program length and repertoire to your community's needs.</em>
-        </p>
-    </section>
+    </div>
+</div>
 
-    <!-- CONTACT FORM -->
-    <section id="contact" class="tab-content">
-        <div class="form-container">
-            <h2 style="text-align: center; margin-bottom: 1rem; color: var(--kale-green);">Contact Us</h2>
-            <p style="text-align: center; margin-bottom: 2rem; font-size: 0.9rem; color: #666;">
-                Interested in booking a performance? Please fill out the form below.
-            </p>
+<!-- TAB: CONTACT -->
+<div id="contact" class="tab-content">
+    <div class="container">
+        <div class="form-box">
+            <h2 style="text-align:center; margin-bottom:1rem; color:var(--gold); letter-spacing: 2px; text-transform: uppercase; font-size: 1.1rem;">Performance Inquiry</h2>
+            <p style="text-align:center; margin-bottom:3.5rem; font-size:0.9rem; opacity:0.6;">For senior communities and community event organizers.</p>
+            
             <form action="https://formspree.io/f/aidenshanmusic@gmail.com" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="text" name="org" placeholder="Organization" required>
-                <input type="email" name="email" placeholder="Your Email Address" required>
-                <textarea name="message" rows="5" placeholder="Tell us about the opportunity (Date, location, etc.)" required></textarea>
-                <button type="submit" class="btn-submit">Send Inquiry</button>
+                <input type="text" name="name" placeholder="Contact Name" required>
+                <input type="text" name="org" placeholder="Organization Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <textarea name="message" rows="5" placeholder="Tell us about the opportunity..." required></textarea>
+                <button type="submit" class="btn-submit">Submit Inquiry</button>
             </form>
         </div>
-    </section>
+    </div>
 </div>
 
 <footer>
-    <div class="logo" style="margin-bottom: 0.8rem;">KALE Quartet</div>
-    <div class="footer-info">
-        Tri-Valley, California<br>
-        aidenshanmusic@gmail.com<br>
-        &copy; 2024 KALE Quartet. All rights reserved.
+    <img src="logo.png" alt="KALE" class="footer-logo" onerror="this.style.display='none'">
+    <div class="footer-text">
+        TRI-VALLEY, CALIFORNIA<br>
+        AIDENSHANMUSIC@GMAIL.COM<br><br>
+        &copy; 2024 KALE WOODWIND QUARTET
     </div>
 </footer>
 
 <script>
     function showTab(tabId) {
-        // Hide all content
-        const contentSections = document.querySelectorAll('.tab-content');
-        contentSections.forEach(section => section.classList.remove('active'));
-        
-        // Reset nav links
-        const navLinks = document.querySelectorAll('.nav-links li');
-        navLinks.forEach(link => link.classList.remove('active'));
-
-        // Activate selected
+        // Switch content
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
-        
-        // Highlight active nav link (handle edge cases)
-        const targetNav = document.getElementById('nav-' + tabId);
-        if (targetNav) targetNav.classList.add('active');
 
-        // Smooth scroll to top
+        // Switch Nav highlighting
+        document.querySelectorAll('.nav-links li').forEach(l => l.classList.remove('active'));
+        const activeLink = document.getElementById('link-' + tabId);
+        if (activeLink) activeLink.classList.add('active');
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
